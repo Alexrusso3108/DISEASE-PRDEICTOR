@@ -1,0 +1,37 @@
+Patient_ID,Age,Gender,Symptom_1,Symptom_2,Symptom_3,Blood_Pressure,Sugar_Level,Cholesterol,Medical_History,Disease
+P001,24,Female,Fever,Cough,Body Pain,118,92,165,None,Flu
+P002,32,Male,Fever,Cough,Headache,122,95,172,None,Flu
+P003,41,Female,Fever,Sore Throat,Fatigue,126,102,188,Asthma,Flu
+P004,57,Male,Chest Pain,Shortness of Breath,Sweating,152,126,242,Hypertension,Heart Disease
+P005,63,Female,Chest Pain,Fatigue,Dizziness,160,132,260,Hypertension,Heart Disease
+P006,49,Male,Chest Pain,Shortness of Breath,Nausea,148,118,230,Diabetes,Heart Disease
+P007,45,Female,Frequent Urination,Excessive Thirst,Fatigue,132,196,215,Obesity,Diabetes
+P008,52,Male,Excessive Thirst,Blurred Vision,Fatigue,138,225,228,Hypertension,Diabetes
+P009,36,Female,Frequent Urination,Weight Loss,Excessive Thirst,124,188,190,None,Diabetes
+P010,29,Male,Headache,Runny Nose,Sneezing,116,88,160,None,Common Cold
+P011,22,Female,Runny Nose,Sneezing,Sore Throat,110,82,155,None,Common Cold
+P012,34,Male,Cough,Runny Nose,Sore Throat,119,90,168,None,Common Cold
+P013,38,Female,Fever,Headache,Nausea,124,98,170,None,Dengue
+P014,27,Male,Fever,Body Pain,Rash,118,91,162,None,Dengue
+P015,44,Female,Fever,Joint Pain,Rash,130,106,184,None,Dengue
+P016,61,Male,Shortness of Breath,Wheezing,Cough,142,112,205,Asthma,Asthma
+P017,46,Female,Wheezing,Cough,Chest Tightness,128,96,190,Asthma,Asthma
+P018,35,Male,Shortness of Breath,Chest Tightness,Cough,122,94,176,Asthma,Asthma
+P019,54,Female,Headache,Dizziness,Blurred Vision,166,118,238,Hypertension,Hypertension
+P020,59,Male,Headache,Fatigue,Chest Pain,172,124,246,Hypertension,Hypertension
+P021,48,Female,Dizziness,Blurred Vision,Fatigue,158,110,225,None,Hypertension
+P022,30,Male,Fever,Cough,Shortness of Breath,124,96,174,None,Pneumonia
+P023,67,Female,Fever,Chest Pain,Shortness of Breath,154,135,236,Diabetes,Pneumonia
+P024,55,Male,Cough,Fatigue,Shortness of Breath,146,120,220,Asthma,Pneumonia
+P025,26,Female,Nausea,Vomiting,Stomach Pain,112,86,158,None,Gastritis
+P026,39,Male,Stomach Pain,Nausea,Acidity,120,92,175,None,Gastritis
+P027,43,Female,Vomiting,Acidity,Stomach Pain,126,99,182,None,Gastritis
+P028,51,Male,Joint Pain,Fatigue,Swelling,134,108,205,None,Arthritis
+P029,64,Female,Joint Pain,Swelling,Body Pain,144,116,212,Hypertension,Arthritis
+P030,58,Male,Swelling,Joint Pain,Fatigue,136,102,198,None,Arthritis
+P031,33,Female,Headache,Fatigue,Sensitivity to Light,116,84,162,None,Migraine
+P032,40,Male,Headache,Nausea,Sensitivity to Light,122,92,174,None,Migraine
+P033,28,Female,Dizziness,Headache,Nausea,114,80,158,None,Migraine
+P034,69,Male,Chest Pain,Sweating,Dizziness,176,148,270,Diabetes,Heart Disease
+P035,37,Female,Fever,Rash,Joint Pain,121,89,166,None,Dengue
+P036,50,Male,Blurred Vision,Excessive Thirst,Frequent Urination,140,240,238,Obesity,Diabetes

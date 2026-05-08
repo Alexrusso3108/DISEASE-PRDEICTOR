@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, redirect, render_template, request, url_for
 
 from src.database import (
@@ -99,4 +101,5 @@ def build_patient_data(form) -> dict:
 
 
 if __name__ == "__main__":
-    app.run(debug=False, use_reloader=False)
+    port = int(os.environ.get("PORT", "5000"))
+    app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)

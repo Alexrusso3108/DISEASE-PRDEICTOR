@@ -1,9 +1,12 @@
 from pathlib import Path
+import os
 import sqlite3
 
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
-DB_PATH = ROOT_DIR / "data" / "predictions.db"
+DB_PATH = Path(
+    os.environ.get("PREDICTIONS_DB_PATH", str(ROOT_DIR / "data" / "predictions.db"))
+)
 
 CREATE_PREDICTIONS_TABLE = """
 CREATE TABLE IF NOT EXISTS predictions (

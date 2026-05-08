@@ -1,3 +1,12 @@
+---
+title: Disease Prediction System
+colorFrom: teal
+colorTo: blue
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # Disease Prediction System
 
 A machine learning based healthcare analytics project that predicts probable diseases from patient symptoms and medical parameters.
@@ -15,24 +24,26 @@ A machine learning based healthcare analytics project that predicts probable dis
 
 ```text
 Glowlogics-disease-predictor/
-├── app.py
-├── requirements.txt
-├── README.md
-├── data/
-│   └── disease_data.csv
-├── models/
-│   └── .gitkeep
-├── src/
-│   ├── __init__.py
-│   ├── predict.py
-│   └── train_model.py
-├── static/
-│   └── style.css
-└── templates/
-    └── index.html
+|-- app.py
+|-- Dockerfile
+|-- requirements.txt
+|-- README.md
+|-- data/
+|   |-- disease_data.csv
+|-- models/
+|   |-- disease_model.joblib
+|-- src/
+|   |-- __init__.py
+|   |-- database.py
+|   |-- predict.py
+|   |-- train_model.py
+|-- static/
+|   |-- style.css
+|-- templates/
+|   |-- index.html
 ```
 
-The app creates `data/predictions.db` automatically when predictions are saved.
+The app creates a SQLite database automatically when predictions are saved. Locally it uses `data/predictions.db`. On Hugging Face Spaces, the Dockerfile sets it to `/data/predictions.db`.
 
 ## Setup
 
@@ -59,6 +70,21 @@ Open the displayed local URL in your browser, usually:
 ```text
 http://127.0.0.1:5000
 ```
+
+## Hugging Face Spaces Deployment
+
+Create a new Hugging Face Space with:
+
+- SDK: `Docker`
+- App port: `7860`
+
+Then upload or push this repository to the Space. Spaces will build the `Dockerfile` and run:
+
+```bash
+gunicorn --bind 0.0.0.0:7860 app:app
+```
+
+For saved prediction history that survives restarts, enable persistent storage in the Space settings. Hugging Face mounts persistent storage at `/data`, and this project stores the SQLite file at `/data/predictions.db` during deployment.
 
 ## Dataset Columns
 

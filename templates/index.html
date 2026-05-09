@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Prediction System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="app-shell">
+        <header class="app-header">
+            <div class="brand-cluster">
+                <div class="brand-mark" aria-hidden="true">
+                    <span></span>
+                </div>
+                <div>
+                    <p class="eyebrow">Healthcare Analytics</p>
+                    <h1>Disease Prediction System</h1>
+                </div>
+            </div>
+
+        </header>
+
+        <section class="dashboard-grid">
+            <form method="POST" class="panel intake-panel">
+                <div class="panel-header">
+                    <div>
+                        <p class="section-label">Patient Intake</p>
+                        <h2>Clinical Inputs</h2>
+                    </div>
+                    <span class="status-pill">Active</span>
+                </div>
+
+                <fieldset>
+                    <legend>Profile</legend>
+                    <div class="form-grid two-columns">
+                        <label>
+                            Age
+                            <input type="number" name="age" min="1" max="120" value="{{ prediction.age if prediction else 35 }}" required>
+                        </label>
+
+                        <label>
+                            Gender
+                            <select name="gender" required>
+                                <option {% if prediction and prediction.gender == "Female" %}selected{% endif %}>Female</option>
+                                <option {% if prediction and prediction.gender == "Male" %}selected{% endif %}>Male</option>
+                            </select>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Symptoms</legend>
+                    <div class="form-grid three-columns">
+                        <label>
+                            Symptom 1
+                            <select name="symptom_1" required>
+                                {% for symptom in symptoms %}
+                                <option {% if prediction and prediction.symptom_1 == symptom %}selected{% endif %}>{{ symptom }}</option>
+                                {% endfor %}
+                            </select>
+                        </label>
+
+                        <label>
+                            Symptom 2
+                            <select name="symptom_2" required>
+                                {% for symptom in symptoms %}
+                                <option {% if prediction and prediction.symptom_2 == symptom %}selected{% endif %}>{{ symptom }}</option>
+                                {% endfor %}
+                            </select>
+                        </label>
+
+                        <label>
+                            Symptom 3
+                            <select name="symptom_3" required>
+                                {% for symptom in symptoms %}
+                                <option {% if prediction and prediction.symptom_3 == symptom %}selected{% endif %}>{{ symptom }}</option>
+                                {% endfor %}
+                            </select>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Vitals</legend>
+                    <div class="form-grid three-columns">
+                        <label>
+                            Blood Pressure
+                            <input type="number" name="blood_pressure" min="70" max="220" value="{{ prediction.blood_pressure if prediction else 120 }}" required>
+                        </label>
+
+                        <label>
+                            Sugar Level
+                            <input type="number" name="sugar_level" min="50" max="400" value="{{ prediction.sugar_level if prediction else 95 }}" required>
+                        </label>
+
+                        <label>
+                            Cholesterol
+                            <input type="number" name="cholesterol" min="100" max="400" value="{{ prediction.cholesterol if prediction else 180 }}" required>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>History</legend>
+                    <label>
+                        Medical History
+                        <select name="medical_history" required>
+                            {% for item in medical_history %}
+                            <option {% if prediction and prediction.medical_history == item %}selected{% endif %}>{{ item }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                </fieldset>
+
+                <button type="submit">
+                    <span class="button-symbol" aria-hidden="true"></span>
+                    Predict and Save
+                </button>
+            </form>
+
+            <aside class="panel result-panel">
+                {% if prediction %}
+                <div class="panel-header">
+                    <div>
+                        <p class="section-label">Current Result</p>
+                        <h2>{{ prediction.disease }}</h2>
+                    </div>
+                    <span class="risk-badge risk-{{ prediction.risk_level | lower }}">{{ prediction.risk_level }}</span>
+                </div>
+
+                <div class="confidence-meter" style="--value: {{ prediction.confidence }}%;">
+                    <span>{{ prediction.confidence }}%</span>
+                </div>
+
+                <div class="metric-stack">
+                    <div>
+                        <span>Risk Level</span>
+                        <strong class="risk-text risk-text-{{ prediction.risk_level | lower }}">{{ prediction.risk_level }}</strong>
+                    </div>
+                    <div>
+                        <span>Symptoms</span>
+                        <strong>{{ prediction.symptom_1 }}, {{ prediction.symptom_2 }}, {{ prediction.symptom_3 }}</strong>
+                    </div>
+                    <div>
+                        <span>Vitals</span>
+                        <strong>BP {{ prediction.blood_pressure }} | Sugar {{ prediction.sugar_level }} | Chol {{ prediction.cholesterol }}</strong>
+                    </div>
+                </div>
+
+                <p class="medical-note">Academic model. Medical decisions require clinician review.</p>
+                {% elif error %}
+                <div class="empty-state error-state">
+                    <p class="section-label">Action Needed</p>
+                    <h2>Prediction unavailable</h2>
+                    <p>{{ error }}</p>
+                </div>
+                {% else %}
+                <div class="empty-state">
+                    <p class="section-label">Current Result</p>
+                    <h2>No prediction selected</h2>
+                    <p>Saved results will appear here after prediction.</p>
+                </div>
+                {% endif %}
+            </aside>
+        </section>
+
+        <section class="records-grid">
+            <div class="panel history-panel">
+                <div class="panel-header">
+                    <div>
+                        <p class="section-label">SQLite Records</p>
+                        <h2>Recent Predictions</h2>
+                    </div>
+                    <span class="status-pill">{{ recent_predictions | length }} shown</span>
+                </div>
+
+                {% if recent_predictions %}
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Created</th>
+                                <th>Disease</th>
+                                <th>Risk</th>
+                                <th>Confidence</th>
+                                <th>Inputs</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in recent_predictions %}
+                            <tr>
+                                <td><a href="{{ url_for('index', prediction_id=item.id) }}">#{{ item.id }}</a></td>
+                                <td>{{ item.created_at }}</td>
+                                <td>{{ item.disease }}</td>
+                                <td><span class="risk-badge compact risk-{{ item.risk_level | lower }}">{{ item.risk_level }}</span></td>
+                                <td>{{ item.confidence }}%</td>
+                                <td>{{ item.symptom_1 }}, {{ item.symptom_2 }}, {{ item.symptom_3 }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="empty-row">No saved predictions yet.</div>
+                {% endif %}
+            </div>
+
+            <aside class="panel distribution-panel">
+                <div class="panel-header">
+                    <div>
+                        <p class="section-label">Summary</p>
+                        <h2>Disease Mix</h2>
+                    </div>
+                </div>
+
+                {% if disease_summary %}
+                <div class="disease-bars">
+                    {% for item in disease_summary %}
+                    <div class="bar-row">
+                        <div class="bar-label">
+                            <span>{{ item.disease }}</span>
+                            <strong>{{ item.total }}</strong>
+                        </div>
+                        <div class="bar-track">
+                            <span style="width: {{ (item.total / disease_summary[0].total * 100) | round(0, 'floor') }}%;"></span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="empty-row">No summary data yet.</div>
+                {% endif %}
+            </aside>
+        </section>
+    </main>
+</body>
+</html>

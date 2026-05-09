@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aegis | Futuristic Health Prediction</title>
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+  <body>
+    <div id="app">
+      <!-- Background Effects -->
+      <div class="bg-glow blob-1"></div>
+      <div class="bg-glow blob-2"></div>
+      <div class="grid-overlay"></div>
+
+      <!-- Sidebar -->
+      <aside class="sidebar glass-panel">
+        <div class="logo">
+          <i class="fa-solid fa-dna neon-text-cyan"></i>
+          <h1>AEGIS</h1>
+        </div>
+        <nav class="nav-menu">
+          <a href="#" class="nav-link active" data-target="dashboard">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="#" class="nav-link" data-target="predictor">
+            <i class="fa-solid fa-microscope"></i>
+            <span>Scan AI</span>
+          </a>
+          <a href="#" class="nav-link" data-target="history">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>History</span>
+          </a>
+          <a href="#" class="nav-link" data-target="settings">
+            <i class="fa-solid fa-gear"></i>
+            <span>Settings</span>
+          </a>
+        </nav>
+        <div class="user-profile">
+          <div class="avatar">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex&backgroundColor=1f2937" alt="User Avatar">
+          </div>
+          <div class="user-info">
+            <p class="name">S. Kumar</p>
+            <p class="role">ID: 884-2X</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="main-content">
+        <!-- Topbar -->
+        <header class="topbar glass-panel">
+          <div class="search-bar">
+            <i class="fa-solid fa-search"></i>
+            <input type="text" placeholder="Search patient ID or condition...">
+          </div>
+          <div class="header-actions">
+            <button class="icon-btn notification-btn">
+              <i class="fa-regular fa-bell"></i>
+              <span class="badge"></span>
+            </button>
+            <div class="status-indicator">
+              <span class="pulse"></span>
+              System Online
+            </div>
+          </div>
+        </header>
+
+        <!-- Pages Container -->
+        <div class="pages-container">
+          <!-- Dashboard Page -->
+          <section id="dashboard" class="page active">
+            <div class="header-title">
+              <h2>Overview</h2>
+              <p class="subtitle">System Analytics & Health Metrics</p>
+            </div>
+            
+            <div class="dashboard-grid">
+              <!-- Stat Cards -->
+              <div class="stat-card glass-panel">
+                <div class="stat-icon cyan">
+                  <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+                <div class="stat-details">
+                  <h3>Scans Completed</h3>
+                  <p class="value neon-text-cyan">1,248</p>
+                  <span class="trend positive"><i class="fa-solid fa-arrow-up"></i> 12%</span>
+                </div>
+              </div>
+
+              <div class="stat-card glass-panel">
+                <div class="stat-icon purple">
+                  <i class="fa-solid fa-brain"></i>
+                </div>
+                <div class="stat-details">
+                  <h3>AI Accuracy</h3>
+                  <p class="value neon-text-purple">98.4%</p>
+                  <span class="trend positive"><i class="fa-solid fa-arrow-up"></i> 0.2%</span>
+                </div>
+              </div>
+
+              <div class="stat-card glass-panel">
+                <div class="stat-icon orange">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div class="stat-details">
+                  <h3>High Risk Cases</h3>
+                  <p class="value">42</p>
+                  <span class="trend negative"><i class="fa-solid fa-arrow-up"></i> 5%</span>
+                </div>
+              </div>
+
+              <!-- Main Chart Area (Mockup) -->
+              <div class="chart-container glass-panel span-2">
+                <div class="card-header">
+                  <h3>Disease Prediction Trends</h3>
+                  <div class="time-filters">
+                    <button class="filter active">1W</button>
+                    <button class="filter">1M</button>
+                    <button class="filter">1Y</button>
+                  </div>
+                </div>
+                <div class="mock-chart">
+                  <div class="bar-group">
+                    <div class="bar cyan" style="height: 60%"></div>
+                    <div class="bar purple" style="height: 40%"></div>
+                  </div>
+                  <div class="bar-group">
+                    <div class="bar cyan" style="height: 80%"></div>
+                    <div class="bar purple" style="height: 50%"></div>
+                  </div>
+                  <div class="bar-group">
+                    <div class="bar cyan" style="height: 40%"></div>
+                    <div class="bar purple" style="height: 70%"></div>
+                  </div>
+                  <div class="bar-group">
+                    <div class="bar cyan" style="height: 90%"></div>
+                    <div class="bar purple" style="height: 60%"></div>
+                  </div>
+                  <div class="bar-group">
+                    <div class="bar cyan" style="height: 50%"></div>
+                    <div class="bar purple" style="height: 30%"></div>
+                  </div>
+                  <div class="bar-group">
+                    <div class="bar cyan" style="height: 75%"></div>
+                    <div class="bar purple" style="height: 85%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Secondary Widget -->
+              <div class="widget-container glass-panel">
+                <div class="card-header">
+                  <h3>System Status</h3>
+                </div>
+                <div class="circular-progress">
+                  <svg viewBox="0 0 100 100">
+                    <circle class="bg" cx="50" cy="50" r="40"></circle>
+                    <circle class="progress" cx="50" cy="50" r="40"></circle>
+                  </svg>
+                  <div class="inner-text">
+                    <span class="percentage">100%</span>
+                    <span class="label">Optimal</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Predictor Page -->
+          <section id="predictor" class="page">
+            <div class="header-title">
+              <h2>Aegis Scan AI</h2>
+              <p class="subtitle">Input symptoms for advanced disease prediction</p>
+            </div>
+
+            <div class="predictor-layout">
+              <div class="input-section glass-panel">
+                <h3>Patient Symptoms</h3>
+                <form id="prediction-form">
+                  <div class="input-group">
+                    <label>Age</label>
+                    <input type="number" class="glass-input" placeholder="e.g. 45" required>
+                  </div>
+                  <div class="input-group">
+                    <label>Primary Symptoms</label>
+                    <textarea class="glass-input" rows="3" placeholder="Describe symptoms (e.g., chest pain, fever, fatigue)..." required></textarea>
+                  </div>
+                  <div class="input-group row">
+                    <div class="checkbox-group">
+                      <input type="checkbox" id="symp1" class="cyber-checkbox">
+                      <label for="symp1">High Blood Pressure</label>
+                    </div>
+                    <div class="checkbox-group">
+                      <input type="checkbox" id="symp2" class="cyber-checkbox">
+                      <label for="symp2">Diabetes History</label>
+                    </div>
+                    <div class="checkbox-group">
+                      <input type="checkbox" id="symp3" class="cyber-checkbox">
+                      <label for="symp3">Smoking</label>
+                    </div>
+                  </div>
+                  <button type="submit" class="cyber-btn" id="analyze-btn">
+                    <span>Initialize Scan</span>
+                    <i class="fa-solid fa-fingerprint"></i>
+                  </button>
+                </form>
+              </div>
+
+              <div class="result-section glass-panel" id="result-container">
+                <div class="idle-state">
+                  <i class="fa-solid fa-satellite-dish pulse-icon"></i>
+                  <p>Awaiting Data Input</p>
+                </div>
+                
+                <div class="scanning-state hidden">
+                  <div class="scanner-line"></div>
+                  <div class="hologram-effect">
+                    <i class="fa-solid fa-user-injured fa-4x"></i>
+                  </div>
+                  <p class="scanning-text">Analyzing Bio-Metrics...</p>
+                  <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                  </div>
+                </div>
+
+                <div class="result-state hidden">
+                  <div class="result-header">
+                    <h3 class="neon-text-purple">Scan Complete</h3>
+                    <div class="accuracy-badge">94.2% Confidence</div>
+                  </div>
+                  <div class="prediction-card">
+                    <h4 class="disease-name">Hypertension Risk</h4>
+                    <p class="disease-desc">Patient presents significant risk markers for hypertension. Recommend immediate cardiovascular evaluation.</p>
+                    <div class="risk-level high">
+                      <span>Risk Level</span>
+                      <strong>CRITICAL</strong>
+                    </div>
+                  </div>
+                  <button class="cyber-btn outline" id="reset-btn">New Scan</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
